@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
   IonApp,
   IonLabel,
@@ -11,6 +11,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import Table from './pages/Table'
 import TableShow from './pages/TableShow'
+import CreateItem from './pages/CreateItem'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,8 +37,9 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/table" component={Table} exact={true} />
+          <Route path="/table" component={Table} exact />
           <Route path="/table/:id" component={TableShow} />
+          <Route path="/create" component={CreateItem} exact />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="table" href="/table">
