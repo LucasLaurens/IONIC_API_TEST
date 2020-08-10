@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react'
 import { IonList, IonItem } from '@ionic/react'
+import { delete_item } from '../store/actions/actions'
 
 class Table extends Component {
 	constructor(props) {
 		super(props)
+	}
+
+	deleteItem = (item) => {
+		console.log(item)
+		this.props.DeleteItem(item)
 	}
 
 	render() {
@@ -30,6 +36,7 @@ class Table extends Component {
 					  return (
 						  <IonItem key={item.id}>
 							  <a href={`/table/${item.id}`}>{item.name}</a>
+							  <button type="submit" className="btn btn-alert" onClick={() => this.deleteItem(item)}>delete</button>
 						  </IonItem>
 					  )
 				  })}
@@ -47,4 +54,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(Table);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        DeleteItem: (item) => dispatch(delete_item(item))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

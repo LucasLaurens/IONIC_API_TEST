@@ -14,3 +14,12 @@ export const create_item = (item) => {
         })
     }
 }
+
+export const delete_item = (item) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: 'DELETE_ITEM',
+            item
+        })
+    }
+}

@@ -26,9 +26,14 @@ const itemsReducer = (state = initState, action) => {
                 ...state,
                 items: [...state.items, action.item]
             }
-        // case 'DELETE_ITEM':
-        //     console.log('delete item', action.id)
-        //     return state
+        case 'DELETE_ITEM':
+            console.log('delete item', action.id)
+            return {
+                ...state,
+                items: state.items.filter(item => {
+                    return item.id !== action.item.id
+                })
+            }
         // case 'EDIT_ITEM':
         //     console.log('edit item', action.item)
         //     return state
