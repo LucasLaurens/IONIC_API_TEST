@@ -16,6 +16,7 @@ class Table extends Component {
 
 	render() {
 		const { items } = this.props
+		console.log(items)
 
 		return (
 			<IonPage>
@@ -34,10 +35,13 @@ class Table extends Component {
 				<IonList>
 					{items.map(item => {
 					  return (
-						  <IonItem key={item.id}>
-							  <a href={`/table/${item.id}`}>{item.name}</a>
-							  <button type="submit" className="btn btn-alert" onClick={() => this.deleteItem(item)}>delete</button>
-						  </IonItem>
+						  	<div key={item.id}>
+								<IonItem>
+									<a href={`/table/${item.id}`}> {item.name}</a>
+								</IonItem>
+								<a href={`/edit/${item.id}`}> edit</a>
+								<button type="submit" className="btn btn-alert" onClick={() => this.deleteItem(item)}> delete </button>
+						  	</div>
 					  )
 				  })}
 				</IonList>

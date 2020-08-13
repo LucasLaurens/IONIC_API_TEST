@@ -31,6 +31,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import EditItem from './pages/EditItem';
 
 const App: React.FC = () => (
   <IonApp>
@@ -40,6 +41,7 @@ const App: React.FC = () => (
           <Route path="/table" component={Table} exact />
           <Route path="/table/:id" component={TableShow} />
           <Route path="/create" component={CreateItem} exact />
+          <Route path="/edit/:id" component={EditItem} exact />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="table" href="/table">

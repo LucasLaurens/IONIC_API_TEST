@@ -1,3 +1,6 @@
+import update from 'react-addons-update';
+import { parse } from 'path';
+
 const initState = {
     items: [
 		{
@@ -34,9 +37,15 @@ const itemsReducer = (state = initState, action) => {
                     return item.id !== action.item.id
                 })
             }
-        // case 'EDIT_ITEM':
-        //     console.log('edit item', action.item)
-        //     return state
+        case 'EDIT_ITEM':
+            console.log('edit item', action.item)
+            return update(state, {
+                items: {
+                  [action.item.id - 1]: {
+                    name: {$set: action.item.name}
+                  }
+                }
+            });
         default:
             return state
     }

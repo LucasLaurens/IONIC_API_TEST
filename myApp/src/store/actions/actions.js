@@ -23,3 +23,12 @@ export const delete_item = (item) => {
         })
     }
 }
+
+export const edit_item = (item) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: 'EDIT_ITEM',
+            item
+        })
+    }
+}
